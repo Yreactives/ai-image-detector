@@ -10,14 +10,13 @@ uploaded_file = st.file_uploader("Choose an Image...", type=["jpg", "png", "jpeg
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", width="stretch")
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
     if st.button("Analyze Image"):
         with st.spinner("Analyzing Pixels (initial load may take ~45s if Render is waking up)..."):
             try:
                 img_bytes = uploaded_file.getvalue()
 
-                # Added timeout=60 to handle Render free-tier cold starts
                 response = requests.post(
                     "https://ai-image-detector-api-br5c.onrender.com/predict",
                     files={"image": (uploaded_file.name, img_bytes, uploaded_file.type)},
@@ -27,17 +26,18 @@ if uploaded_file is not None:
                 if response.status_code == 200:
                     result = response.json()
 
-                    # Read values directly returned by app.py
+                    # Extract response data matching app.py return structure
                     label = result.get("label", "Unknown")
                     confidence = result.get("confidence", 0)
-                    raw_score = result.get("raw_score", 0.0)
+                    scores = result.get("scores", {})
+                    ai_prob = scores.get("ai_generated", 0.0)
 
                     st.subheader(f"Prediction: **{label}**")
                     st.write(f"Confidence: **{confidence}%**")
 
-                    # Progress bar based on raw model probability (0.0 to 1.0)
-                    st.progress(float(raw_score))
-                    st.caption(f"AI Likelihood Score: {round(raw_score * 100, 1)}%")
+                    # Streamlit progress bar requires a float between 0.0 and 1.0
+                    st.progress(float(ai_prob))
+                    st.caption(f"AI Likelihood Score: {round(ai_prob * 100, 1)}%")
                 else:
                     st.error(f"Server Error ({response.status_code}): {response.text}")
 
