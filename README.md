@@ -39,7 +39,7 @@ A binary image classification application designed to detect whether an image is
                                                                     │  Hugging Face Hub            │
                                                                     │  • model_optimized.pth       │
                                                                     └──────────────────────────────┘
-
+```
 ---
 
 ## ⚡ Memory & Performance Optimizations
