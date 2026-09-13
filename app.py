@@ -49,7 +49,7 @@ if not os.path.exists(MODEL_PATH):
 
 # Load state dict without retaining autograd memory allocations
 with torch.no_grad():
-    checkpoint = torch.load(MODEL_PATH, map_location=device)
+    checkpoint = torch.load(MODEL_PATH, map_location=device, mmap=True)
     model = AI_Image_Detector(size).to(device)
     model.load_state_dict(checkpoint["model_state_dict"])
     model.eval()
