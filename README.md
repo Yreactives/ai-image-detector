@@ -13,8 +13,8 @@ A binary image classification application designed to detect whether an image is
 
 ## 🌐 Live Demos
 
-* **Frontend App (Streamlit Cloud):** https://ai-image-detector-yreactives.streamlit.app
-* **Backend API (Render):** https://ai-image-detector-api-br5c.onrender.com/predict
+* **Frontend App (Streamlit Cloud):** https://ai-image-detector-7tu4kdqog2uvjhrg4jrevo.streamlit.app/
+* **Backend API (Render):** https://ai-image-detector-api-br5c.onrender.com
 
 > **Note on Free-Tier Hosting:**  
 > Render puts inactive instances to sleep after 15 minutes. The initial inference request may take 30–45 seconds while the backend spins up and downloads model weights. Subsequent requests respond instantly.
