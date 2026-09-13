@@ -23,22 +23,12 @@ A binary image classification application designed to detect whether an image is
 
 ## 🏗 System Architecture
 
-```text
-+--------------------------------+        HTTP POST (Bytes)        +------------------------------+
-|                                | ------------------------------> |                              |
-|  Streamlit Cloud (ui.py)       |                                 |   Render (app.py)            |
-|  * Image Upload Interface      | <------------------------------ |   * FastAPI REST Service     |
-|  * Client-side 128x128 Resize  |          JSON Response          |   * PyTorch CPU Inference    |
-|                                |  {"label": ..., "scores": ...}  |                              |
-+--------------------------------+                                 +--------------+---------------+
-                                                                                  |
-                                                                        Fetch Weights on Boot
-                                                                                  |
-                                                                                  v
-                                                                   +------------------------------+
-                                                                   |  Hugging Face Hub            |
-                                                                   |  * model_optimized.pth       |
-                                                                   +------------------------------+
+
+```mermaid
+graph TD
+    UI[Streamlit Cloud - ui.py] -- "HTTP POST (128x128 Bytes)" --> API[Render API - app.py]
+    API -- "JSON Response (Label & Scores)" --> UI
+    HF[Hugging Face Hub - model_optimized.pth] -- "Fetch Weights on Boot" --> API
 
 ```
 ---
