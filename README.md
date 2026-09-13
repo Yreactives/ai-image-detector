@@ -55,13 +55,15 @@ To maintain a **100% free deployment** under Render's **512 MB RAM limit**, the 
 ---
 
 ## 📂 Project Structure
-
+```text
 .
 ├── app.py                # FastAPI REST server & PyTorch inference logic
 ├── ui.py                 # Streamlit web interface with client-side preprocessing
 ├── model.py              # Neural network architecture definition
 ├── requirements.txt      # Project dependencies (CPU-only PyTorch)
 └── README.md             # Documentation
+```
+
 
 ---
 
