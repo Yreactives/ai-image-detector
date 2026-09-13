@@ -24,21 +24,22 @@ A binary image classification application designed to detect whether an image is
 ## 🏗 System Architecture
 
 ```text
-┌────────────────────────────────┐         HTTP POST (Bytes)        ┌──────────────────────────────┐
-│                                │ ───────────────────────────────> │                              │
-│  Streamlit Cloud (ui.py)       │                                  │   Render (app.py)            │
-│  • Image Upload Interface      │ <─────────────────────────────── │   • FastAPI REST Service     │
-│  • Client-side 128x128 Resize  │          JSON Response           │   • PyTorch CPU Inference    │
-│                                │   {"label": ..., "scores": ...}  │                              │
-└────────────────────────────────┘                                  └──────────────┬───────────────┘
-                                                                                   │
-                                                                       Fetch Weights on Boot
-                                                                                   │
-                                                                                   v
-                                                                    ┌──────────────────────────────┐
-                                                                    │  Hugging Face Hub            │
-                                                                    │  • model_optimized.pth       │
-                                                                    └──────────────────────────────┘
++--------------------------------+        HTTP POST (Bytes)        +------------------------------+
+|                                | ------------------------------> |                              |
+|  Streamlit Cloud (ui.py)       |                                 |   Render (app.py)            |
+|  * Image Upload Interface      | <------------------------------ |   * FastAPI REST Service     |
+|  * Client-side 128x128 Resize  |          JSON Response          |   * PyTorch CPU Inference    |
+|                                |  {"label": ..., "scores": ...}  |                              |
++--------------------------------+                                 +--------------+---------------+
+                                                                                  |
+                                                                        Fetch Weights on Boot
+                                                                                  |
+                                                                                  v
+                                                                   +------------------------------+
+                                                                   |  Hugging Face Hub            |
+                                                                   |  * model_optimized.pth       |
+                                                                   +------------------------------+
+
 ```
 ---
 
