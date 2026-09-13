@@ -121,7 +121,7 @@ if __name__ == '__main__':
                 "model_state_dict": model.state_dict(),
                 "optimizer_state_dict": optimizer.state_dict(),
                 "val_loss": best_val_loss,
-            }, "best_model_pixiv.pth")
+            }, "model.pth")
 
             print(f"✅ Saved best model (val loss = {best_val_loss:.4f})")
 

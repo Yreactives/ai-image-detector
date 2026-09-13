@@ -19,7 +19,7 @@ transform = transforms.Compose([
 ])
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-checkpoint = torch.load("best_model_pixiv.pth", map_location=device)
+checkpoint = torch.load("model.pth", map_location=device)
 model = AI_Image_Detector(size).to(device)
 model.load_state_dict(checkpoint["model_state_dict"])
 model.eval()

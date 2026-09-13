@@ -5,3 +5,4 @@ testimage/
 dataset/
 cifake/
 model_test.py
+__pycache__/
