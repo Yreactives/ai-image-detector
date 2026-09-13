@@ -15,7 +15,7 @@ if uploaded_file is not None:
         with st.spinner("Analyzing Pixels..."):
             img_bytes = uploaded_file.getvalue()
             response = requests.post(
-                "http://127.0.0.1:8000/predict",
+                "https://ai-image-detector-api-br5c.onrender.com/predict",
                 files={"image": (uploaded_file.name, img_bytes, uploaded_file.type)},
             )
 
