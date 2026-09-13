@@ -6,3 +6,4 @@ dataset/
 cifake/
 model_test.py
 __pycache__/
+convert_precision.py

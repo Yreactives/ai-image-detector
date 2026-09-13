@@ -37,14 +37,14 @@ transform = transforms.Compose([
 ])
 
 device = torch.device("cpu")
-MODEL_PATH = "model.pth"
+MODEL_PATH = "model_optimized.pth"
 
 # Download model weights from Hugging Face if not available locally
 if not os.path.exists(MODEL_PATH):
     print("Downloading model weights from Hugging Face Hub...")
     MODEL_PATH = hf_hub_download(
         repo_id="Yreactives/ai-image-detector-weights",
-        filename="model.pth"
+        filename="model_optimized.pth"
     )
 
 # Load state dict without retaining autograd memory allocations
