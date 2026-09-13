@@ -23,6 +23,7 @@ A binary image classification application designed to detect whether an image is
 
 ## 🏗 System Architecture
 
+```text
 ┌────────────────────────────────┐         HTTP POST (Bytes)        ┌──────────────────────────────┐
 │                                │ ───────────────────────────────> │                              │
 │  Streamlit Cloud (ui.py)       │                                  │   Render (app.py)            │
