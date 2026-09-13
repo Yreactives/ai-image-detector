@@ -6,6 +6,8 @@ from PIL import Image
 from pathlib import Path
 import io
 from model import AI_Image_Detector
+import os
+from huggingface_hub import hf_hub_download
 
 app = FastAPI(title="AI Image Detector")
 size = (128,128)
@@ -19,7 +21,15 @@ transform = transforms.Compose([
 ])
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-checkpoint = torch.load("model.pth", map_location=device)
+MODEL_PATH = "model.pth"
+if not os.path.exists(MODEL_PATH):
+    print("Downloading model weights from Hugging Face Hub...")
+    MODEL_PATH = hf_hub_download(
+        repo_id="Yreactives/ai-image-detector-weights",  # Replace with your username/repo
+        filename="model.pth"
+    )
+checkpoint = torch.load(MODEL_PATH, map_location=device)
+
 model = AI_Image_Detector(size).to(device)
 model.load_state_dict(checkpoint["model_state_dict"])
 model.eval()
