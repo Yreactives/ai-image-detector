@@ -80,7 +80,7 @@ pip install -r requirements.txt
 
 uvicorn app:app --reload --port 8000
 
-Interactive API docs will be available at http://127.0.0.1:8000/docs.
+Interactive API docs will be available at https://ai-image-detector-api-br5c.onrender.com/docs.
 
 ### 4. Run Streamlit Frontend
 
