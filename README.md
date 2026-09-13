@@ -29,6 +29,5 @@ ai-image-detector/
 ├── app.py              # FastAPI inference server & endpoints
 ├── ui.py               # Streamlit web user interface
 ├── model.py            # Neural network architecture definition
-├── model_test.py       # Batch testing script for local evaluations
 ├── model.pth           # Trained PyTorch model checkpoint
 └── requirements.txt    # Project dependencies
