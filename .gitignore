@@ -1,0 +1,7 @@
+venv/
+*.pth
+*.pt
+testimage/
+dataset/
+cifake/
+model_test.py
