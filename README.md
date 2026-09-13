@@ -26,9 +26,9 @@ A binary image classification application designed to detect whether an image is
 
 ```mermaid
 graph TD
-    UI[Streamlit Cloud - ui.py] -- "HTTP POST (128x128 Bytes)" --> API[Render API - app.py]
-    API -- "JSON Response (Label & Scores)" --> UI
-    HF[Hugging Face Hub - model_optimized.pth] -- "Fetch Weights on Boot" --> API
+    UI[Streamlit Cloud] -->|HTTP POST| API[Render API]
+    API -->|JSON Response| UI
+    HF[Hugging Face Hub] -->|Fetch Weights| API
 
 ```
 ---
