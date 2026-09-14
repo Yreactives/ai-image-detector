@@ -27,7 +27,7 @@ if uploaded_file is not None:
     # Display full preview to user
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", width="stretch")
-
+    st.write("Press Analyze Image below to show results")
     if st.button("Analyze Image"):
         with st.spinner("Optimizing & Analyzing Pixels (initial load may take ~45s if Render is waking up)..."):
             try:
